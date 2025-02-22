@@ -65,7 +65,6 @@ const images = [
 ];
 
 const gallery = document.querySelector('.gallery');
-console.log(gallery);
 
 const galleryMarkup = images
   .map(
@@ -86,21 +85,25 @@ const galleryMarkup = images
 
 gallery.innerHTML = galleryMarkup;
 
-const instance = basicLightbox.create(`
-    <div class="modal">
+gallery.addEventListener('click', show_modal_handler);
 
-    <a class="gallery-link" href="https://cdn.pixabay.com/photo/2019/05/14/16/43/rchids-4202820_1280.jpg">
-    <img
-      class="gallery-image"
-      src="https://cdn.pixabay.com/photo/2019/05/14/16/43/rchids-4202820_1280.jpg"
-     
-    />
-  </a>
-        <p>
-            Your first lightbox with just a few lines of code.
-            Yes, it's really that simple.
-        </p>
-    </div>
-`);
+function show_modal_handler(event) {
+  if (event.target.nodeName !== 'IMG') {
+    return;
+  }
+  const instance = basicLightbox.create(`
+      <div class="modal">
 
-instance.show();
+      <a class="gallery-link" href="${event.target.dataset.source}">
+      <img
+        class="modal-image"
+        src="${event.target.dataset.source}"
+        alt="${event.target.alt}"
+      />
+    </a>
+      </div>
+  `);
+  event.preventDefault();
+
+  instance.show();
+}
