@@ -70,7 +70,7 @@ const galleryMarkup = images
   .map(
     img => `
     <li class="gallery-item">
-  <a class="gallery-link" href="${img.original}">
+  <a class="gallery-link" href="${img.original}" data-lightbox="gallery">
     <img
       class="gallery-image"
       src="${img.preview}"
@@ -88,6 +88,7 @@ gallery.innerHTML = galleryMarkup;
 gallery.addEventListener('click', show_modal_handler);
 
 function show_modal_handler(event) {
+  event.preventDefault();
   if (event.target.nodeName !== 'IMG') {
     return;
   }
@@ -103,7 +104,10 @@ function show_modal_handler(event) {
     </a>
       </div>
   `);
-  event.preventDefault();
-
   instance.show();
+
+  const modal = document.querySelector('.modal');
+  modal.addEventListener('click', event => {
+    event.preventDefault();
+  });
 }

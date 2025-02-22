@@ -10,20 +10,24 @@
   gap: 24px;
 }
 
-img {
+.gallery-image {
   width: 360px;
   height: 200px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-img:hover {
+.gallery-image:hover {
   cursor: url('../icons/bxs_hand-down.svg') 22 22, pointer;
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
 .modal {
   background-color: rgba(46, 47, 66, 0.8);
 
-  img {
+  .modal-image {
     width: 1112px;
     height: 640px;
+    cursor: url('../icons/bxs_hand-down.svg') 22 22, pointer;
   }
 }
