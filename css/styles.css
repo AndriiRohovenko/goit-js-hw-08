@@ -1,0 +1,24 @@
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+  width: 1128px;
+  margin: 24px auto;
+  padding: 0px;
+  gap: 24px;
+}
+
+img {
+  width: 360px;
+  height: 200px;
+}
+
+img:hover {
+  cursor: url('../icons/bxs_hand-down.svg') 22 22, pointer;
+}
+
+.modal {
+  background-color: gray;
+}
